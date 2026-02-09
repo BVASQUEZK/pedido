@@ -11,4 +11,4 @@ COPY --from=build /target/*.jar app.jar
 # Usamos el puerto estándar que configuraste en Render
 EXPOSE 8080
 # Formato ejecutable simple: Spring Boot leerá las variables de Render solo
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-Dserver.port=${PORT:8080}", "-jar", "app.jar"]
