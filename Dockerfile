@@ -10,4 +10,4 @@ FROM eclipse-temurin:21-jre-jammy
 WORKDIR /app
 COPY --from=build /app/target/*.jar /app/app.jar
 EXPOSE 8081
-ENTRYPOINT ["java","-jar","/app/app.jar"]
+ENTRYPOINT ["java","-Dspring.datasource.url=jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}?sslMode=REQUIRED","-jar","/app/app.jar"]
